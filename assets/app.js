@@ -10,7 +10,7 @@ function generateInitialButtons(){
 
     for (var i = 0; i < topics.length; i++){
         var button = $('<button>');
-        button.addClass('gif');
+        button.addClass('gif-button');
         button.attr('data-topic', topics[i]);
         button.text(topics[i]);
         $('#buttons').append(button);
@@ -18,7 +18,7 @@ function generateInitialButtons(){
 }
 
 $(document).ready(function() {
-    $(document).on('click', '.gif', function() {
+    $(document).on('click', '.gif-button', function() {
         var searchTopic = $(this).data('topic');
         var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + searchTopic + "&api_key=dc6zaTOxFJmzC&limit=10";
 
@@ -31,14 +31,16 @@ $(document).ready(function() {
             var results = response.data;
 
             for (var i = 0; i < results.length; i++) {
-                var gifDiv = $('<div class="item">')
-
+                var gifDiv = $('<div class="gif-div">')
                 var rating = results[i].rating;
-
                 var paragraph = $('<p>').text("Rating: " + rating);
+                var image = $('<img class="gif">');
+                var gifUrl = results[i].images.fixed_height.url;
 
-                var image = $('<img>');
-                image.attr('src', results[i].images.fixed_height.url);
+                image.attr('src', gifUrl.replace('.gif', '_s.gif'));
+                image.attr('data-still', gifUrl.replace('.gif', '_s.gif'));
+                image.attr('data-animate', gifUrl.replace('_s.gif', '.gif'));
+                image.attr('data-state', 'still');
 
                 gifDiv.append(paragraph);
                 gifDiv.append(image);
@@ -54,6 +56,18 @@ $(document).ready(function() {
         topics.push(gifSearch);
         generateInitialButtons();
         return false;
+    });
+
+    $(document).on('click', '.gif', function() {
+        var state = $(this).attr('data-state');
+        
+        if (state === 'still') {
+            $(this).attr('src', $(this).data('animate'));
+            $(this).attr('data-state', 'animate');
+        } else {
+            $(this).attr('src', $(this).data('still'));
+            $(this).attr('data-state', 'still');
+        }
     });
 
     generateInitialButtons();
