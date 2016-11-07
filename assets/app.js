@@ -54,6 +54,7 @@ $(document).ready(function() {
         var gifSearch = $('#gif-search').val().trim();
 
         topics.push(gifSearch);
+        $('#add-gif-form')[0].reset();
         generateInitialButtons();
         return false;
     });
