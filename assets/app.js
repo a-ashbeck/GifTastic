@@ -19,8 +19,10 @@ function generateInitialButtons(){
 
 $(document).ready(function() {
     $(document).on('click', '.gif-button', function() {
-        var searchTopic = $(this).data('topic');
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + searchTopic + "&api_key=dc6zaTOxFJmzC&limit=10";
+        var searchQ = $(this).data('topic');
+        var limit = 10;
+        var apiKey = 'dc6zaTOxFJmzC';
+        var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + searchQ + '&api_key=' + apiKey + '&limit=' + limit;
 
         $('#gifs').empty();
 
@@ -33,7 +35,7 @@ $(document).ready(function() {
             for (var i = 0; i < results.length; i++) {
                 var gifDiv = $('<div class="gif-div">')
                 var rating = results[i].rating;
-                var paragraph = $('<p>').text("Rating: " + rating);
+                var paragraph = $('<p>').text('Rating: ' + rating);
                 var image = $('<img class="gif">');
                 var gifUrl = results[i].images.fixed_height.url;
 
