@@ -3,22 +3,43 @@
 <head>
 	<meta charset="UTF-8">
 	<title>GIF PARTY!!!</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" integrity="sha384-1L94saFXWAvEw88RkpRz8r28eQMvt7kG9ux3DdCqya/P3CfLNtgqzMnyaUa49Pl2" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
 	<script src="assets/javascript/app.js"></script>
 </head>
 <body>
-	<div id="buttons">
-		
-	</div>
 
-	<form id="add-gif-form">
-	    <label for="gif-search">Add a GIF search</label>
-	    <input type="text" id="gif-search"><br>
-	    <input id="add-gif" type="submit" value="Add a GIF search">
-	</form>
-	
-	<div id="gifs">
 
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand">Random GIFs on Alan's Mind!</a>
+	    </div>
+
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+	      <form id="add-gif-form" class="navbar-form navbar-right" role="search">
+	        <div class="form-group">
+	          <label for="gif-search">Add a GIF search</label>
+			  <input type="text" id="gif-search">
+	        </div>
+			  <input id="add-gif" class="btn btn-default" type="submit" value="Add a GIF search">
+	      </form>
+	    </div>
+	  </div>
+	</nav>
+
+
+	<div class="container">
+		<div class="row">
+			<div id="buttons" class="btn-group-vertical col-md-3 col-sm-12 col-xs-12">
+
+			</div>
+			
+			<div id="gifs" class="col-md-9 col-sm-12 col-xs-12">
+
+		    </div>
+		</div>
     </div>
 </body>
 </html>

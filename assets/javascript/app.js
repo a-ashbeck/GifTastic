@@ -2,7 +2,7 @@ $(document).ready(function() {
     // Array that holds topics to be searched via buttons
     var topics = [
         'Skwisgaar Skwigelf', 'Guitars', 'Abbath', 'Bunnies',
-        'GOBLINS', 'Exactly 100 beers', 'SO MANY CHICKENS',
+        'GOBLINS', '100 beers.', 'SO MANY CHICKENS',
         'All of the unicorns in the galazy', 'YOU DON\'T KNOW ME!',
         'This is the end.'
     ];
@@ -12,9 +12,9 @@ $(document).ready(function() {
     function generateButtons(){
         $('#buttons').empty();
 
-        for (var i = 0; i < topics.length; i++){
+        for (var i = 0; i < topics.length; i++) {
             var button = $('<button>');
-            button.addClass('gif-button');
+            button.addClass('gif-button btn btn-default');
             button.attr('data-topic', topics[i]);
             button.text(topics[i]);
             $('#buttons').append(button);
@@ -42,10 +42,10 @@ $(document).ready(function() {
 
             // For loop to take JSON data and generate HTML to display gifs
             for (var i = 0; i < results.length; i++) {
-                var gifDiv = $('<div class="gif-div">')
+                var panelDiv = $('<div class="gif-div panel panel-default pull-left">')
                 var rating = results[i].rating;
-                var paragraph = $('<p>').text('Rating: ' + rating);
-                var image = $('<img class="gif">');
+                var panelFooter = $('<div class="panel-footer">').text('Rating: ' + rating);
+                var image = $('<img class="gif panel-body">');
                 var gifUrl = results[i].images.fixed_height.url;
 
                 // These set the attributes of the images in order to handle
@@ -56,12 +56,12 @@ $(document).ready(function() {
                 image.attr('data-state', 'still');
 
                 // These append the rating and image to the .gif-div
-                gifDiv.append(paragraph);
-                gifDiv.append(image);
+                panelDiv.append(image);
+                panelDiv.append(panelFooter);
 
                 // Appends the dynamically generated .gif-divs to the div
                 // that contains them all.
-                $('#gifs').prepend(gifDiv);
+                $('#gifs').prepend(panelDiv);
             }
         });
     });
