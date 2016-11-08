@@ -27,7 +27,7 @@ $(document).ready(function() {
         var searchQ = $(this).data('topic');
         var limit = 10;
         var apiKey = 'dc6zaTOxFJmzC';
-        var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' +
+        var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' +
                         searchQ + '&api_key=' + apiKey + '&limit=' + limit;
 
         // Empties the previously loaded gifs
