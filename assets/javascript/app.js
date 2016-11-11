@@ -42,7 +42,7 @@ $(document).ready(function() {
 
             // For loop to take JSON data and generate HTML to display gifs
             for (var i = 0; i < results.length; i++) {
-                var panelDiv = $('<div class="gif-div panel panel-default pull-left">')
+                var panelDiv = $('<div class="gif-div panel panel-default pull-left">');
                 var rating = results[i].rating;
                 var panelFooter = $('<div class="panel-footer">').text('Rating: ' + rating);
                 var image = $('<img class="gif panel-body">');
